@@ -20,10 +20,13 @@ module.exports = app => {
   })
   router.get('/', async (req, res) => {
     const queryOptions= {}
-    if (req.Model.modelName === 'Category') { 
+    if (req.Model.modelName === 'Category') {
       //modelName 等于模块module.exports = mongoose.model('Category', schema)里面的 'Category'
-      queryOptions.populate = 'parent'
+      queryOptions.populate = 'parent' //populate返回全部的数据
     }
+    // else if (req.Model.modelName === 'Article') { 
+    //   queryOptions.populate = 'categories'
+    // }
     const items = await req.Model.find().setOptions(queryOptions).limit(10)
     res.send(items)
   })
