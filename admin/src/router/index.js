@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Main from '../views/Main.vue'
-import CategoriesEdit from '../views/CategoriesEdit.vue'
-import CategoriesList from '../views/CategoriesList.vue'
+import CategoryEdit from '../views/CategoryEdit.vue'
+import CategoryList from '../views/CategoryList.vue'
 
-import ItemsEdit from '../views/ItemsEdit.vue'
-import ItemsList from '../views/ItemsList.vue'
+import ItemEdit from '../views/ItemEdit.vue'
+import ItemList from '../views/ItemList.vue'
+
+import HeroEdit from '../views/HeroEdit.vue'
+import HeroList from '../views/HeroList.vue'
 
 Vue.use(VueRouter)
 
@@ -15,13 +18,18 @@ const routes = [
     name: 'main',
     component: Main,
     children:[
-      {path:'/categories/edit', component: CategoriesEdit},
-      {path:'/categories/edit/:id', component: CategoriesEdit, props: true},
-      {path:'/categories/list', component: CategoriesList},
+      //props 被设置为 true，route.params 将会被设置为组件属性
+      {path:'/categories/edit', component: CategoryEdit},
+      {path:'/categories/edit/:id', component: CategoryEdit, props: true},
+      {path:'/categories/list', component: CategoryList},
 
-      {path:'/items/edit', component: ItemsEdit},
-      {path:'/items/edit/:id', component: ItemsEdit, props: true},
-      {path:'/items/list', component: ItemsList}
+      {path:'/items/edit', component: ItemEdit},
+      {path:'/items/edit/:id', component: ItemEdit, props: true},
+      {path:'/items/list', component: ItemList},
+
+      {path:'/heroes/edit', component: HeroEdit},
+      {path:'/heroes/edit/:id', component: HeroEdit, props: true},
+      {path:'/heroes/list', component: HeroList}
     ]
   }
 ]
