@@ -9,6 +9,7 @@ const http = axios.create({
 http.interceptors.request.use((config) => {
   // 在发送请求之前做些什么
   if (localStorage.token) {
+    console.log(localStorage.token)
     config.headers.Authorization = 'Bearer ' + localStorage.token
   }
   return config;
@@ -18,10 +19,8 @@ http.interceptors.request.use((config) => {
 });
 // 添加响应拦截器
 http.interceptors.response.use(res => {
-  console.log('111')
   return res
 }, err => {
-  console.log(err.response.data)
   if (err.response.data.message) {
     Vue.prototype.$message({
       type: 'error',
