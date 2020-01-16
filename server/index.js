@@ -2,12 +2,14 @@ const express = require('express')
 
 const app = express()
 
-app.use(require('cors')())
-app.use(express.json())
-app.use('/uploads', express.static(__dirname + '/uploads'))
+app.set('secret', 'xsxlovexjy')
 
-require('./plugins/db')(app)
-require('./routes/admin')(app)
+app.use(require('cors')())//跨域cors
+app.use(express.json())//支持 req.body 的使用
+app.use('/uploads', express.static(__dirname + '/uploads'))//定义静态文件路由
+
+require('./plugins/db')(app)//绑定数据库模块
+require('./routes/admin')(app)//admin 页面的 CRUD 模块
 
 
 app.listen(3000, () => {

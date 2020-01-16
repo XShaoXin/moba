@@ -3,7 +3,7 @@
     <h1>管理员列表</h1>
     <el-table :data="items">
       <el-table-column prop="_id" label="ID"></el-table-column>
-      <el-table-column prop="name" label="管理员名称"></el-table-column>
+      <el-table-column prop="username" label="管理员名称"></el-table-column>
       <el-table-column fixed="right" label="操作">
         <template slot-scope="scope">
           <el-button
@@ -31,7 +31,7 @@ export default {
       this.items = res.data;
     },
     async remove(row) {
-      this.$confirm(`此操作将永久删除该管理员 "${row.name}", 是否继续?`, '提示', {
+      this.$confirm(`此操作将永久删除该管理员 "${row.username}", 是否继续?`, '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
