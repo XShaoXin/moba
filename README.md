@@ -47,8 +47,10 @@
 1. 主页框架和顶部菜单
     - 添加router ---- $ vue add router
 1. 首页顶部轮播图片 (vue swiper)
+    - 安装 $npm install vue-awesome-swiper --save
 1. 使用精灵图片 (sprite)
 1. 使用字体图标 (iconfont)
+    - 阿里图标
 1. 卡片组件 (card)
 1. 列表卡片组件 (list-card, nav, swiper)
 1. 首页新闻资讯-数据录入(+后台bug修复)

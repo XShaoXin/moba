@@ -143,9 +143,8 @@ p {
     border-bottom: 3px solid transparent;
     padding-bottom: 0.2rem;
     &.active {
-      border-bottom: 3px solid #fff;
-      // color: map-get($colors, 'primary');
-      // border-bottom-color: map-get($colors, 'primary');
+      color: map-get($colors, 'primary');
+      border-bottom-color: map-get($colors, 'primary');
     }
   }
   &.nav-inverse {
@@ -161,7 +160,7 @@ p {
 
 // sprite
 .sprite {
-  // background: url(../images/index.png) no-repeat 0 0;
+  background: url(../images/index.png) no-repeat 0 0;
   background-size: 28.8462rem;
   display: inline-block;
   &.sprite-news {
