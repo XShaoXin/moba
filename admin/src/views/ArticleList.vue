@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1>分类列表</h1>
+    <h1>文章列表</h1>
     <el-table :data="items">
       <el-table-column prop="_id" label="ID"></el-table-column>
       <!-- <el-table-column prop="categories" label="上级分类"></el-table-column> -->
-      <el-table-column prop="title" label="分类名称"></el-table-column>
+      <el-table-column prop="title" label="文章名称"></el-table-column>
       <el-table-column fixed="right" label="操作">
         <template slot-scope="scope">
           <el-button

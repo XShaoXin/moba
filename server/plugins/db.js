@@ -10,4 +10,6 @@ module.exports = app => {
       console.log('Connection success!')
     }
   })
+
+  require('require-all')(__dirname, '/../models')
 }

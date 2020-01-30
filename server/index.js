@@ -10,6 +10,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'))//定义静态文件�
 
 require('./plugins/db')(app)//绑定数据库模块
 require('./routes/admin')(app)//admin 页面的 CRUD 模块
+require('./routes/web/index')(app)
 
 
 app.listen(3000, () => {

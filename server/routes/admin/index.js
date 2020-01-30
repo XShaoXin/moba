@@ -34,7 +34,7 @@ module.exports = app => {
       //modelName 等于模块module.exports = mongoose.model('Category', schema)里面的 'Category'
       queryOptions.populate = 'parent' //populate返回全部的数据
     }
-    const items = await req.Model.find().setOptions(queryOptions).limit(10)
+    const items = await req.Model.find().setOptions(queryOptions).limit(100)
     res.send(items)
   })
   //查找资源
