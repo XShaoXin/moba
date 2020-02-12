@@ -13,9 +13,13 @@ Vue.use(VueAwesomeSwiper)
 //卡片组件
 import Card from './components/Card.vue'
 Vue.component('m-card', Card)
-
 import CardList from './components/CardList.vue'
 Vue.component('m-card-list', CardList)
+//axios
+import axios from 'axios'
+Vue.prototype.$http = axios.create({
+  baseURL: 'http://localhost:3000/web/api'
+})
 
 import router from './router'
 

@@ -4,16 +4,20 @@
       <div class="nav jc-between">
         <div
           class="nav-item"
-          :class="{active: active === i}"
           v-for="(item, i) in categories"
           :key="i"
-          @click="active = i"
+          :class="{active: active === i}"
+          @click="$refs.swiper.swiper.slideTo(i)"
         >
           <div class="nav-link">{{item.name}}</div>
         </div>
       </div>
     </div>
-    <swiper>
+    <swiper
+      :options="{autoHeight:true}"
+      ref="swiper"
+      @slide-change="() => {active = $refs.swiper.swiper.realIndex}"
+    >
       <swiper-slide v-for="(item, index) in categories" :key="index">
         <slot name="items" :category="item"></slot>
       </swiper-slide>

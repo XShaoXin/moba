@@ -31,15 +31,35 @@
     <!-- 卡片start -->
     <m-card-list title="新闻资讯" icon="icon-caidan1" :categories="newsCats">
       <template #items="{category}">
-        <div class="pt-4 d-flex fs-lg" v-for="(item, index) in category.newsList" :key="index">
-          <span>[{{item.categoryName}}]</span>
+        <router-link
+          tag='div'
+          :to="`/article/${item._id}`"
+          class="pt-4 d-flex fs-lg"
+          v-for="(item, index) in category.newsList"
+          :key="index"
+        >
+          <span class="text-info">[{{item.categoryName}}]</span>
           <span class="mx-1">|</span>
-          <span class="flex-1">{{item.title}}</span>
-          <span>{{item.date}}</span>
+          <span class="flex-1 text-ellipsis">{{item.title}}</span>
+          <span class="text-grey fx-xs">{{item.createdAt | date}}</span>
+        </router-link>
+      </template>
+    </m-card-list>
+    <m-card-list title="英雄列表" icon="icon-card-hero" :categories="heroCats">
+      <template #items="{category}">
+        <div class="d-flex flex-wrap" style="margin: 0 -0.5rem">
+          <div
+            v-for="(hero, index) in category.heroList"
+            :key="index"
+            class="p-2 text-center"
+            style="width:20%;"
+          >
+            <img :src="hero.avatar" alt class="w-100" />
+            <span class="fs-sm">{{hero.name}}</span>
+          </div>
         </div>
       </template>
     </m-card-list>
-    <m-card title="英雄列表" icon="icon-card-hero"></m-card>
     <p>aaaa</p>
     <p>aaaa</p>
     <p>aaaa</p>
@@ -59,7 +79,13 @@
 </template>
 
 <script>
+import dayjs from "dayjs";
 export default {
+  filters: {
+    date(val) {
+      return dayjs(val).format("MM/DD");
+    }
+  },
   data() {
     return {
       swiperOption: {
@@ -70,49 +96,22 @@ export default {
           delay: 1500
         }
       },
-      newsCats: [
-        {
-          name: "热门",
-          newsList: new Array(5).fill({}).map(() => ({
-            categoryName: "公告",
-            title: "1月21日全服不停机更新公告",
-            date: "01/02"
-          }))
-        },
-        {
-          name: "热门1",
-          newsList: new Array(5).fill({}).map(() => ({
-            categoryName: "公告1",
-            title: "1月21日全服不停机更新公告",
-            date: "01/02"
-          }))
-        },
-        {
-          name: "热门2",
-          newsList: new Array(5).fill({}).map(() => ({
-            categoryName: "公告2",
-            title: "1月21日全服不停机更新公告",
-            date: "01/02"
-          }))
-        },
-        {
-          name: "热门3",
-          newsList: new Array(5).fill({}).map(() => ({
-            categoryName: "公告3",
-            title: "1月21日全服不停机更新公告",
-            date: "01/02"
-          }))
-        },
-        {
-          name: "热门4",
-          newsList: new Array(5).fill({}).map(() => ({
-            categoryName: "公告4",
-            title: "1月21日全服不停机更新公告",
-            date: "01/02"
-          }))
-        }
-      ]
+      newsCats: [],
+      heroCats: []
     };
+  },
+  methods: {
+    async fetchNewsCats() {
+      const res = await this.$http.get("/news/list");
+      this.newsCats = res.data;
+    },
+    async fetchHeroCats() {
+      const res = await this.$http.get("/Heroes/list");
+      this.heroCats = res.data;
+    }
+  },
+  created() {
+    this.fetchNewsCats(), this.fetchHeroCats();
   }
 };
 </script>

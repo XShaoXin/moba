@@ -56,9 +56,20 @@
 1. 首页新闻资讯-数据录入(+后台bug修复)
     - 导入require-all,把所有的模型先引入
 1. 首页新闻资讯-数据接口
+    - /web/api/news/init
 1. 首页新闻资讯-界面展示
+    - 安装dayjs和axios, 设置baseURL
 1. 首页英雄列表-提取官网数据
+    - $$('li',$$('.hero-nav')[0]).map((v, i) => {
+return {   
+name : v.innerText,   
+heroes : $$('li', $$('.hero-list')[i]).map(hero => {   
+return {   
+name: hero.innerText,   
+avatar: $$('img', hero)[0].src   
+}})}})
 1. 首页英雄列表-录入数据
+    - /web/api/heroes/init
 1. 首页英雄列表-界面展示
 1. 新闻详情页
 1. 新闻详情页-完善
