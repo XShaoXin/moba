@@ -6,27 +6,43 @@
       <div class="fs-xs text-grey">{{model.createdAt | date}}</div>
     </div>
     <div v-html="model.body" class="px-3 fs-lg body"></div>
-    <div class="pt-2 border-top">
+    <div class="px-2 py-3 border-top d-flex">
       <i class="iconfont icon-lianjie"></i>
+      <strong class="fs-lx mx-2 text-blue">相关资讯</strong>
+    </div>
+    <div class="px-2 fs-lg text-ellipsis">
+      <router-link
+        class="py-1"
+        tag="div"
+        :to="`/article/${item._id}`"
+        v-for="(item, index) in model.related"
+        :key="index"
+      >{{item.title}}</router-link>
     </div>
   </div>
 </template>
 
 <script>
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 export default {
   props: {
     id: { required: true }
   },
-  filters:{
-    date(val){
-      return dayjs(val).format('YYYY-MM-DD')
+  filters: {
+    date(val) {
+      return dayjs(val).format("YYYY-MM-DD");
     }
   },
   data() {
     return {
       model: null
     };
+  },
+  watch: {
+    id: "fetch",
+    // id() {
+    //   this.fetch;
+    // }
   },
   methods: {
     async fetch() {
@@ -42,15 +58,16 @@ export default {
 
 <style lang="scss">
 .page-article {
-  .icon-arrow-lift{
-    font-size: 30px;
+  .icon-arrow-lift,
+  .icon-lianjie {
+    font-size: 2.3077rem;
   }
   .body {
     img {
       max-width: 100%;
       height: auto;
     }
-    iframe{
+    iframe {
       max-width: 100%;
       height: auto;
     }

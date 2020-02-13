@@ -75,8 +75,7 @@ module.exports = app => {
   // 初始化英雄列表
   router.get('/heroes/init', async (req, res) => {
     await Hero.deleteMany()
-    const rawData = [
-      {
+    const rawData = [{
       "name": "热门",
       "heroes": [{
         "name": "后羿",
@@ -578,7 +577,16 @@ module.exports = app => {
 
   //详情页界口
   router.get('/article/:id', async (req, res) => {
-    res.send(await Article.findById(req.params.id))
+    const data = await Article.findById(req.params.id).lean()
+    data.related = await Article.find().where({
+      categories: {
+        $in: data.categories
+      },
+      _id: {
+        $ne: data._id
+      }      
+    }).limit(2)
+    res.send(data)
   })
 
   app.use('/web/api', router)
