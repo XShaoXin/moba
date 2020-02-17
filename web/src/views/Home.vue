@@ -14,6 +14,7 @@
       <div class="swiper-pagination pagination-home pr-3 py-2" slot="pagination"></div>
     </swiper>
     <!-- 轮播图end -->
+
     <!-- 九宫格start -->
     <div class="nav-icons mt-3 bg-white text-dark text-center">
       <div class="d-flex flex-wrap">
@@ -28,11 +29,12 @@
       </div>
     </div>
     <!-- 九宫格end -->
+
     <!-- 卡片start -->
     <m-card-list title="新闻资讯" icon="icon-caidan1" :categories="newsCats">
       <template #items="{category}">
         <router-link
-          tag='div'
+          tag="div"
           :to="`/article/${item._id}`"
           class="pt-4 d-flex fs-lg"
           v-for="(item, index) in category.newsList"
@@ -48,7 +50,9 @@
     <m-card-list title="英雄列表" icon="icon-card-hero" :categories="heroCats">
       <template #items="{category}">
         <div class="d-flex flex-wrap" style="margin: 0 -0.5rem">
-          <div
+          <router-link
+            tag="div"
+            :to="`/hero/${hero._id}`"
             v-for="(hero, index) in category.heroList"
             :key="index"
             class="p-2 text-center"
@@ -56,7 +60,7 @@
           >
             <img :src="hero.avatar" alt class="w-100" />
             <span class="fs-sm">{{hero.name}}</span>
-          </div>
+          </router-link>
         </div>
       </template>
     </m-card-list>

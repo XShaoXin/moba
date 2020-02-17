@@ -11,6 +11,11 @@ import http from './http'
 Vue.prototype.$http = http
 
 Vue.mixin({
+  computed: {
+    uploadUrl(){
+      return this.$http.defaults.baseURL+'/upload'
+    }
+  },
   methods: {
     getAuthorization(){
       return {Authorization: `Bearer ${localStorage.token || ''}`}

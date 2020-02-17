@@ -75,7 +75,8 @@ module.exports = app => {
   // 初始化英雄列表
   router.get('/heroes/init', async (req, res) => {
     await Hero.deleteMany()
-    const rawData = [{
+    const rawData = [
+      {
       "name": "热门",
       "heroes": [{
         "name": "后羿",
@@ -575,7 +576,7 @@ module.exports = app => {
     res.send(cats)
   })
 
-  //详情页界口
+  //详情页界接口
   router.get('/article/:id', async (req, res) => {
     const data = await Article.findById(req.params.id).lean()
     data.related = await Article.find().where({
@@ -586,6 +587,12 @@ module.exports = app => {
         $ne: data._id
       }      
     }).limit(2)
+    res.send(data)
+  })
+
+  //英雄页接口
+  router.get('/heroes/:id', async (req, res) => {
+    const data = await Hero.findById(req.params.id).populate('categories').lean()
     res.send(data)
   })
 
