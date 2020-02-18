@@ -3,6 +3,7 @@ module.exports = app => {
   const Article = require('../../models/Article')
   const Category = require('../../models/Category')
   const Hero = require('../../models/Hero')
+  const Item = require('../../models/Item')
 
   // 初始化新闻列表
   router.get('/news/init', async (req, res) => {
@@ -75,8 +76,7 @@ module.exports = app => {
   // 初始化英雄列表
   router.get('/heroes/init', async (req, res) => {
     await Hero.deleteMany()
-    const rawData = [
-      {
+    const rawData = [{
       "name": "热门",
       "heroes": [{
         "name": "后羿",
@@ -585,14 +585,14 @@ module.exports = app => {
       },
       _id: {
         $ne: data._id
-      }      
+      }
     }).limit(2)
     res.send(data)
   })
 
   //英雄页接口
   router.get('/heroes/:id', async (req, res) => {
-    const data = await Hero.findById(req.params.id).populate('categories').lean()
+    const data = await Hero.findById(req.params.id).populate('categories items1 items2 partners.hero').lean()
     res.send(data)
   })
 

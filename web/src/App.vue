@@ -8,5 +8,5 @@
 </script>
 
 <style lang="scss">
-@import '//at.alicdn.com/t/font_1620166_wlpjpg9r3cb.css'
+@import '//at.alicdn.com/t/font_1620166_1x085pvym9a.css'
 </style>
