@@ -107,12 +107,7 @@
         <swiper-slide class="bg-white">111</swiper-slide>
       </swiper>
     </div>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
+    
   </div>
 </template>
 
