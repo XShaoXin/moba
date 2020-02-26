@@ -6,6 +6,9 @@ app.set('secret', 'xsxlovexjy')
 
 app.use(require('cors')())//跨域cors
 app.use(express.json())//支持 req.body 的使用
+
+app.use('/', express.static(__dirname + '/web'))
+app.use('/admin', express.static(__dirname + '/admin'))
 app.use('/uploads', express.static(__dirname + '/uploads'))//定义静态文件路由
 
 require('./plugins/db')(app)//绑定数据库模块
