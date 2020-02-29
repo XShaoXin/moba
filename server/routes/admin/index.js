@@ -51,7 +51,8 @@ module.exports = app => {
   }) //上传的路径
   app.post('/admin/api/upload', authMiddlewate(), upload.single('file'), async (req, res) => {
     const file = req.file //upload.single('file') 使得 file 添加到 req
-    file.url = `http://47.115.19.161/uploads/${file.filename}`
+    // file.url = `http://47.115.19.161/uploads/${file.filename}`
+    file.url = `http://localhost:3000/uploads/${file.filename}`
     res.send(file)
   })
 

@@ -3,13 +3,23 @@
     <!-- 轮播图start -->
     <swiper :options="swiperOption">
       <swiper-slide>
-        <img class="w-100" src="../assets/images/41eeba8d8279d79241a7c9e7b5d57b0b.jpeg" alt />
+        <a
+          href="http://pvp.qq.com/m/m201606/newCont.shtml?G_Biz=18&e_code=502278&idataid=296451&tid=439303"
+        >
+          <img class="w-100" src="../assets/images/41eeba8d8279d79241a7c9e7b5d57b0b.jpeg" alt />
+        </a>
       </swiper-slide>
       <swiper-slide>
-        <img class="w-100" src="../assets/images/92b37fe4ca9c32bfc961b1f0daa780a6.jpeg" alt />
+        <a href="">
+          <img class="w-100" src="../assets/images/92b37fe4ca9c32bfc961b1f0daa780a6.jpeg" alt />
+        </a>
       </swiper-slide>
       <swiper-slide>
-        <img class="w-100" src="../assets/images/f33c0fc57920840fb7be498bd7fbc484.jpeg" alt />
+        <a
+          href="http://pvp.qq.com/m/m201606/newCont.shtml?G_Biz=18&e_code=502281&idataid=296454&tid=439356"
+        >
+          <img class="w-100" src="../assets/images/f33c0fc57920840fb7be498bd7fbc484.jpeg" alt />
+        </a>
       </swiper-slide>
       <div class="swiper-pagination pagination-home pr-3 py-2" slot="pagination"></div>
     </swiper>
@@ -18,12 +28,56 @@
     <!-- 九宫格start -->
     <div class="nav-icons mt-3 bg-white text-dark text-center">
       <div class="d-flex flex-wrap">
-        <div class="nav-item my-3" v-for="(item, index) in 13" :key="index">
+        <div class="nav-item my-3">
           <i class="sprite sprite-news"></i>
           <div class="py-1">爆料站</div>
         </div>
+        <div class="nav-item my-3">
+          <i class="sprite sprite-news"></i>
+          <div class="py-1">爆料站2</div>
+        </div>
+        <div class="nav-item my-3">
+          <i class="sprite sprite-news"></i>
+          <div class="py-1">爆料站3</div>
+        </div>
+        <div class="nav-item my-3">
+          <i class="sprite sprite-news"></i>
+          <div class="py-1">爆料站4</div>
+        </div>
+        <div class="nav-item my-3" v-show="navItem">
+          <i class="sprite sprite-news"></i>
+          <div class="py-1">爆料站n</div>
+        </div>
+        <div class="nav-item my-3" v-show="navItem">
+          <i class="sprite sprite-news"></i>
+          <div class="py-1">爆料站n</div>
+        </div>
+        <div class="nav-item my-3" v-show="navItem">
+          <i class="sprite sprite-news"></i>
+          <div class="py-1">爆料站n</div>
+        </div>
+        <div class="nav-item my-3" v-show="navItem">
+          <i class="sprite sprite-news"></i>
+          <div class="py-1">爆料站n</div>
+        </div>
+        <div class="nav-item my-3" v-show="navItem">
+          <i class="sprite sprite-news"></i>
+          <div class="py-1">爆料站n</div>
+        </div>
+        <div class="nav-item my-3" v-show="navItem">
+          <i class="sprite sprite-news"></i>
+          <div class="py-1">爆料站n</div>
+        </div>
+        <div class="nav-item my-3" v-show="navItem">
+          <i class="sprite sprite-news"></i>
+          <div class="py-1">爆料站n</div>
+        </div>
+        <div class="nav-item my-3" v-show="navItem">
+          <i class="sprite sprite-news"></i>
+          <div class="py-1">爆料站n</div>
+        </div>
       </div>
-      <div class="bg-light py-2 fs-sm d-flex jc-center ai-center">
+      <div class="bg-light py-2 fs-sm d-flex jc-center ai-center" @click="navItem = !navItem">
         <i class="sprite sprite-arrow mr-1"></i>
         <span>收起</span>
       </div>
@@ -86,7 +140,8 @@ export default {
         }
       },
       newsCats: [],
-      heroCats: []
+      heroCats: [],
+      navItem: false,
     };
   },
   methods: {
