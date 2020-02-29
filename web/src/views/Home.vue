@@ -10,7 +10,7 @@
         </a>
       </swiper-slide>
       <swiper-slide>
-        <a href="">
+        <a href>
           <img class="w-100" src="../assets/images/92b37fe4ca9c32bfc961b1f0daa780a6.jpeg" alt />
         </a>
       </swiper-slide>
@@ -28,53 +28,57 @@
     <!-- 九宫格start -->
     <div class="nav-icons mt-3 bg-white text-dark text-center">
       <div class="d-flex flex-wrap">
-        <div class="nav-item my-3">
-          <i class="sprite sprite-news"></i>
+        <div class="nav-item my-75">
+          <i class="sprite sprite-blz"></i>
           <div class="py-1">爆料站</div>
         </div>
-        <div class="nav-item my-3">
-          <i class="sprite sprite-news"></i>
-          <div class="py-1">爆料站2</div>
+        <div class="nav-item my-75">
+          <i class="sprite sprite-gsz"></i>
+          <div class="py-1">故事站</div>
         </div>
-        <div class="nav-item my-3">
-          <i class="sprite sprite-news"></i>
-          <div class="py-1">爆料站3</div>
+        <div class="nav-item my-75">
+          <i class="sprite sprite-zbsc"></i>
+          <div class="py-1">周边商城</div>
         </div>
-        <div class="nav-item my-3">
-          <i class="sprite sprite-news"></i>
-          <div class="py-1">爆料站4</div>
+        <div class="nav-item my-75">
+          <i class="sprite sprite-tyf"></i>
+          <div class="py-1">体验服</div>
         </div>
-        <div class="nav-item my-3" v-show="navItem">
-          <i class="sprite sprite-news"></i>
-          <div class="py-1">爆料站n</div>
+        <div class="nav-item my-75" v-show="navItem">
+          <i class="sprite sprite-xrzq"></i>
+          <div class="py-1">新人专区</div>
         </div>
-        <div class="nav-item my-3" v-show="navItem">
-          <i class="sprite sprite-news"></i>
-          <div class="py-1">爆料站n</div>
+        <div class="nav-item my-75" v-show="navItem">
+          <i class="sprite sprite-rycc"></i>
+          <div class="py-1">荣耀·传承</div>
         </div>
-        <div class="nav-item my-3" v-show="navItem">
-          <i class="sprite sprite-news"></i>
-          <div class="py-1">爆料站n</div>
+        <div class="nav-item my-75" v-show="navItem">
+          <i class="sprite sprite-mnzzlk"></i>
+          <div class="py-1">模拟战资料库</div>
         </div>
-        <div class="nav-item my-3" v-show="navItem">
-          <i class="sprite sprite-news"></i>
-          <div class="py-1">爆料站n</div>
+        <div class="nav-item my-75" v-show="navItem">
+          <i class="sprite sprite-wzyd"></i>
+          <div class="py-1">王者营地</div>
         </div>
-        <div class="nav-item my-3" v-show="navItem">
-          <i class="sprite sprite-news"></i>
-          <div class="py-1">爆料站n</div>
+        <div class="nav-item my-75" v-show="navItem">
+          <i class="sprite sprite-gzh"></i>
+          <div class="py-1">公众号</div>
         </div>
-        <div class="nav-item my-3" v-show="navItem">
-          <i class="sprite sprite-news"></i>
-          <div class="py-1">爆料站n</div>
+        <div class="nav-item my-75" v-show="navItem">
+          <i class="sprite sprite-bbjs"></i>
+          <div class="py-1">版本介绍</div>
         </div>
-        <div class="nav-item my-3" v-show="navItem">
-          <i class="sprite sprite-news"></i>
-          <div class="py-1">爆料站n</div>
+        <div class="nav-item my-75" v-show="navItem">
+          <i class="sprite sprite-djhj"></i>
+          <div class="py-1">对局环境</div>
         </div>
-        <div class="nav-item my-3" v-show="navItem">
-          <i class="sprite sprite-news"></i>
-          <div class="py-1">爆料站n</div>
+        <div class="nav-item my-75" v-show="navItem">
+          <i class="sprite sprite-wzwyt"></i>
+          <div class="py-1">无限王者团</div>
+        </div>
+        <div class="nav-item my-75" v-show="navItem">
+          <i class="sprite sprite-czhdy"></i>
+          <div class="py-1">创意互动营</div>
         </div>
       </div>
       <div class="bg-light py-2 fs-sm d-flex jc-center ai-center" @click="navItem = !navItem">
@@ -141,7 +145,7 @@ export default {
       },
       newsCats: [],
       heroCats: [],
-      navItem: false,
+      navItem: false
     };
   },
   methods: {
