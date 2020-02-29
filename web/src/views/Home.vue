@@ -1,24 +1,10 @@
 <template>
   <div>
     <!-- 轮播图start -->
-    <swiper :options="swiperOption">
-      <swiper-slide>
-        <a
-          href="http://pvp.qq.com/m/m201606/newCont.shtml?G_Biz=18&e_code=502278&idataid=296451&tid=439303"
-        >
-          <img class="w-100" src="../assets/images/41eeba8d8279d79241a7c9e7b5d57b0b.jpeg" alt />
-        </a>
-      </swiper-slide>
-      <swiper-slide>
-        <a href>
-          <img class="w-100" src="../assets/images/92b37fe4ca9c32bfc961b1f0daa780a6.jpeg" alt />
-        </a>
-      </swiper-slide>
-      <swiper-slide>
-        <a
-          href="http://pvp.qq.com/m/m201606/newCont.shtml?G_Biz=18&e_code=502281&idataid=296454&tid=439356"
-        >
-          <img class="w-100" src="../assets/images/f33c0fc57920840fb7be498bd7fbc484.jpeg" alt />
+    <swiper :options="swiperOption" v-if="slideshow">
+      <swiper-slide v-for="(item, index) in slideshow" :key="index">
+        <a :href="item.url">
+          <img class="w-100" :src="item.image" />
         </a>
       </swiper-slide>
       <div class="swiper-pagination pagination-home pr-3 py-2" slot="pagination"></div>
@@ -44,46 +30,46 @@
           <i class="sprite sprite-tyf"></i>
           <div class="py-1">体验服</div>
         </div>
-        <div class="nav-item my-75" v-show="navItem">
+        <div class="nav-item my-75" v-show="sprite">
           <i class="sprite sprite-xrzq"></i>
           <div class="py-1">新人专区</div>
         </div>
-        <div class="nav-item my-75" v-show="navItem">
+        <div class="nav-item my-75" v-show="sprite">
           <i class="sprite sprite-rycc"></i>
           <div class="py-1">荣耀·传承</div>
         </div>
-        <div class="nav-item my-75" v-show="navItem">
+        <div class="nav-item my-75" v-show="sprite">
           <i class="sprite sprite-mnzzlk"></i>
           <div class="py-1">模拟战资料库</div>
         </div>
-        <div class="nav-item my-75" v-show="navItem">
+        <div class="nav-item my-75" v-show="sprite">
           <i class="sprite sprite-wzyd"></i>
           <div class="py-1">王者营地</div>
         </div>
-        <div class="nav-item my-75" v-show="navItem">
+        <div class="nav-item my-75" v-show="sprite">
           <i class="sprite sprite-gzh"></i>
           <div class="py-1">公众号</div>
         </div>
-        <div class="nav-item my-75" v-show="navItem">
+        <div class="nav-item my-75" v-show="sprite">
           <i class="sprite sprite-bbjs"></i>
           <div class="py-1">版本介绍</div>
         </div>
-        <div class="nav-item my-75" v-show="navItem">
+        <div class="nav-item my-75" v-show="sprite">
           <i class="sprite sprite-djhj"></i>
           <div class="py-1">对局环境</div>
         </div>
-        <div class="nav-item my-75" v-show="navItem">
+        <div class="nav-item my-75" v-show="sprite">
           <i class="sprite sprite-wzwyt"></i>
           <div class="py-1">无限王者团</div>
         </div>
-        <div class="nav-item my-75" v-show="navItem">
+        <div class="nav-item my-75" v-show="sprite">
           <i class="sprite sprite-czhdy"></i>
           <div class="py-1">创意互动营</div>
         </div>
       </div>
-      <div class="bg-light py-2 fs-sm d-flex jc-center ai-center" @click="navItem = !navItem">
-        <i class="sprite sprite-arrow mr-1"></i>
-        <span>收起</span>
+      <div class="bg-light py-2 fs-sm d-flex jc-center ai-center" @click="sprite = !sprite">
+        <i class="sprite sprite-arrow mr-1" :class="{open: !sprite}"></i>
+        <span v-text="sprite?'收起':'展开'"></span>
       </div>
     </div>
     <!-- 九宫格end -->
@@ -137,18 +123,26 @@ export default {
     return {
       swiperOption: {
         pagination: {
-          el: ".pagination-home"
+          el: ".pagination-home",
+          clickable: true
         },
+        loop: true,
         autoplay: {
-          delay: 1500
+          delay: 1500,
+          disableOnInteraction: false
         }
       },
+      slideshow: null,
       newsCats: [],
       heroCats: [],
-      navItem: false
+      sprite: false
     };
   },
   methods: {
+    async fetchSlideshow() {
+      const res = await this.$http.get("/ad");
+      this.slideshow = res.data;
+    },
     async fetchNewsCats() {
       const res = await this.$http.get("/news/list");
       this.newsCats = res.data;
@@ -159,7 +153,9 @@ export default {
     }
   },
   created() {
-    this.fetchNewsCats(), this.fetchHeroCats();
+    this.fetchSlideshow();
+    this.fetchNewsCats();
+    this.fetchHeroCats();
   }
 };
 </script>
@@ -189,5 +185,9 @@ export default {
       border-right: none;
     }
   }
+}
+
+.open {
+  transform: rotate(180deg);
 }
 </style>

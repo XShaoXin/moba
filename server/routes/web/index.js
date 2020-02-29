@@ -3,6 +3,7 @@ module.exports = app => {
   const Article = require('../../models/Article')
   const Category = require('../../models/Category')
   const Hero = require('../../models/Hero')
+  const Ad = require('../../models/Ad')
   const Item = require('../../models/Item')
 
   // 初始化新闻列表
@@ -594,6 +595,12 @@ module.exports = app => {
   router.get('/heroes/:id', async (req, res) => {
     const data = await Hero.findById(req.params.id).populate('categories items1 items2 partners.hero').lean()
     res.send(data)
+  })
+
+  //轮播图接口
+  router.get('/ad', async(req, res) => {
+    const data = await Ad.find().where({name: '首页幻灯片'}).lean()
+    res.send(data[0].items)
   })
 
   app.use('/web/api', router)
