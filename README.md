@@ -1,49 +1,54 @@
 # Node.js + Vue.js 全栈开发王者荣耀手机端官网和管理后台
-
-## 一、 入门
-1. 项目介绍
-1. 工具安装和环境搭建(nodejs,npm,mongodb)
-1. 初始化项目
-
+# 展示: https://test.xsxin.top/
+## 一、 初始化项目
+1. server
+    - 配置 : nodemon index.js
+    - npm i express@next, mongooes, cors(跨域)
+    - 设置db, models, routes
+1. admin和web---vue create name
+    - 添加router ---- $ vue add router
+    - npm i axios, 配置$http
+    - 
 ## 二、 管理后台
-1. 基于Element UI的后台管理基础界面搭建
+1. 基于Element UI的后台管理基础界面搭建---npm i ElementUI
 1. 创建分类
 1. 分类列表
 1. 修改分类
 1. 删除分类
 1. 子分类
-1. **通用 CRUD 接口**
+1. **通用 CRUD 接口**---npm i inflection(用于单复数装换,开头大小写)
 1. 装备管理
 1. 图片上传 (multer)
 1. 英雄管理
+    - 报错(this.model = res.data) => 解决: this.model = Object.assign({}, this.model, res.data)
 1. 编辑英雄 (关联,多选,el-select, multiple)
 1. 技能编辑
 1. 文章管理
 1. 富文本编辑器 (quill)
-1. 首页广告管理
+1. 首页广告管理(轮播图)
 1. 管理员账号管理 (bcryptjs)
 1. 登录页面
 1. 登录接口 (jwt,jsonwebtoken)
+    - server: npm run jsonwebtoken(sign()生成token)
+    - admin: 保存token, 然后添加请求拦截把token发送给服务端---添加Authorization
 1. 服务端登录校验
-    - 添加校验token中间件
-    - 安装http-assert
-    - Example
-    > var assert = require('http-assert')  
-    > assert(username === 'fjodor', 401, 'authentication failed')
+    - 添加中间件(除登录接口),接收的token进行jwt(verify())校验, 并把查询到的数据添加到req.user
+    - npm i http-assert
     - 添加错误处理中间件发送一个err.message的错误信息
     - 前端判断是否有token,有则发送Authorization
-    - 添加响应拦截器---有无登录,无则$router.push到登录页面
+    - 添加响应拦截器---错误拦截和有无登录拦截,无则$router.push到登录页面
 1. 客户端路由限制 (beforeEach, meta)
 1. 上传文件的登录校验 (el-upload, headers)
 
 ## 三、移动端网站
 
-1. "工具样式"概念和 SASS (SCSS)
+1. SASS
     - $ npm i -D sass sass-loader
 1. 样式重置
-1. 网站色彩和字体定义 (colors, text)
-1. 通用flex布局样式定义 (flex)
-1. 常用边距定义 (margin, padding)
+1. 工具类
+    - 网站色彩和字体定义 (colors, text)
+    - 通用flex布局样式定义 (flex)
+    - 常用边距定义 (margin, padding)
 1. 主页框架和顶部菜单
     - 添加router ---- $ vue add router
 1. 首页顶部轮播图片 (vue swiper)
@@ -80,6 +85,7 @@ avatar: $$('img', hero)[0].src
 
 ## 四、发布和部署 (阿里云)
 
+## 文档：编译生产环境并放到服务器.note链接：http://note.youdao.com/noteshare?id=1c094559c02ade57b2fe9ab42efc7a3b
 1. 生产环境编译
 1. 购买域名和服务器
 1. 域名解析
