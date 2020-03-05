@@ -1,5 +1,5 @@
 # Node.js + Vue.js 全栈开发王者荣耀手机端官网和管理后台
-# 展示: https://test.xsxin.top/
+# 展示: https://test.xsxin.top/, 后台管理页面为: https://test.xsxin.top/admin, 管理员:admin,密码123456
 ## 一、 初始化项目
 1. server
     - 配置 : nodemon index.js
