@@ -91,6 +91,8 @@ avatar: $$('img', hero)[0].src
 1. 配置 Nginx 的反向代理
 1. 迁移本地数据到服务器 (mongodump)
 
-## 五、进阶
+## 五、SSL和OSS
 1. 使用免费SSL证书启用HTTPS安全连接
+https://letsencrypt.org/
+https://certbot.eff.org/
 1. 使用阿里云OSS云存储存放上传文件
